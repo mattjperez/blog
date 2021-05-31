@@ -1,6 +1,6 @@
 # Newtypes and the Orphan Rule
 
-_01 January 2021 · #rust · #traits_
+_31 May 2021 · #rust_
 
 **Table of Contents**
 - [Intro](#intro)

@@ -49,8 +49,6 @@ Solution: Newtype wrapper around ExternalType
 
 Discuss this article on
 - [Github](https://github.com/mattjperez/blog/discussions)
-- [Twitter](https://twitter.com/pretzelhammer/status/1379561720176336902)
-
 
 ## Notifications
 

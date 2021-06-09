@@ -105,7 +105,7 @@ To add two `unsigned` integers, convert them to their binary representations and
 130 = 10000010
 ```
 
-#### Introducing a Sign-Bit 
+#### Introducing a Sign Bit 
 
 A simple way to represent positive and negative numbers is by adding a `sign bit`. In this case, `0` represents positive integers while `1` represents negative integers.
 

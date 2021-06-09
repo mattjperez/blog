@@ -231,9 +231,8 @@ The primary concerns around machine-dependent types are that of portability and 
 
 https://doc.rust-lang.org/stable/rust-by-example/types/cast.html
 
-## Handling Overflow
+### Handling Overflow
 #### Rust vs C/C++
-### Signed Overflow
 <sup>[1](#reddit)</sup>
 <sup>[2](#huonw)</sup>
 - Saturating

@@ -26,11 +26,12 @@ This blog is broken into two parts:
 - Theoretical: Acts as a general overview of numerical data representation.
 - Practical: Builds off of the theory and shows how to improve your usage of numbers in Rust.
 
-If you've ever felt unsure of or wondered about any of the following, then you may find this article helpful.
-- When should I use `isize` or `usize`?
-- What happens when I do something like `10_usize - 20_usize` and how do I handle the result?
-- What are the `saturating`, `wrapping` and `overflowing` integer methods in the standard library?
-- How does Rust handle overflow bit-shifting on signed integers?
+You may find this blog usefeful if:
+- You're coming to Rust from an interpreted language, like Python.
+- You'd like a refresher on numerical data representation.
+- You've wondered when to use `isize` or `usize`?
+- You don't know how to prevent cases like `10_u8 - 20_u8` from panicking.
+- You don't know what the `saturating`, `wrapping` and `overflowing` integer methods in the standard library do.
 
 ## Theory
 

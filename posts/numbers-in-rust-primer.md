@@ -248,7 +248,8 @@ As great as it is to know what happens under the hood, it would be nice to have 
 
 That's where constants come in. 
 
-> fun fact: in the source code, NAN is represented as 0.0_f32/0.0_f32, INFINITY as 1.0_f32/0.0_f32, and NEG_INFINITY as -1.0_f32/0.0_f32
+> fun fact: in the source code, `NAN` is represented as `0.0_f32 / 0.0_f32`, `INFINITY` as `1.0_f32 / 0.0_f32`, and `NEG_INFINITY` as `-1.0_f32 / 0.0_f32`.
+> Dividing by zero appears to have its uses :) 
 ```rust
 
 //TODO: Add examples

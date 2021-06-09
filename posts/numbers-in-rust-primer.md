@@ -17,7 +17,7 @@ _10 June 2021 · #rust · #primitives_
   - [Unsigned](#unsigned)
   - [Signed](#signed) 
 - [Conclusion](#conclusion)
-- [Bibliography](#bibliography
+- [Bibliography](#bibliography)
 
 
 

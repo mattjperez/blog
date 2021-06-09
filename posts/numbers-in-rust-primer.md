@@ -37,6 +37,7 @@ Each bit represents a **power of 2**, so a group of **8 bits** representing the 
 | :---------------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | Base 10 (Decimal) |      128      |      64       |      32       |      16       |       8       |       4       |       2       |       1       |
 |  Base 2 (Binary)  | 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
+
 `128 + 0 + 0 + 0 + 0 + 0 + 2 + 0 == 130`
 The above representation is that of an `unsigned` integer with `8-bits`, i.e. Rust's `u8`.  
 

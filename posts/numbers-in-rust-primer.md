@@ -208,10 +208,9 @@ larger range -> worse precision
 
 Mantissa vs exponent
 
-![alt text](../assets/618px-IEEE_754_Double_Floating_Point_Format.svg.png "Double-Precision Floating-Point Binary Representation")
 
-![alt text][logo]
-[logo]: ../assets/590px-Float_example.svg.png "Single-Precision Floating-Point Representation"
+![alt text](../assets/590px-Float_example.svg.png "Single-Precision Floating-Point Representation")
+![alt text](../assets/618px-IEEE_754_Double_Floating_Point_Format.svg.png "Double-Precision Floating-Point Binary Representation")
 
 
 23 binary digits of precision for f32

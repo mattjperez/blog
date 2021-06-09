@@ -6,9 +6,9 @@ _10 June 2021 · #rust · #primitives_
 - [Intro](#intro)
 - [Unsigned Integers](#unsigned-integers)
 - [Signed Integers](#signed-integers)
-  - [Signed Overflow](#signed-overflow)
+- [isize and usize](#isize-and-usize)
 - [Floats](#floats)
-- [Handling Overflow](#handling-overflow)
+- [Overflow](#overflow)
   - [Saturating](#saturating)
   - [Wrapping](#wrapping)
   - [Checking](#checking)
@@ -74,20 +74,19 @@ b. give you keywords to search for more in-depth information (`overflowing_liter
 So what happens with larger unsigned integer types?
 
 
-
 ## Signed Integers
 
-### Signed Overflow
-<sup>[1](#reddit)</sup>
 
-<sup>[2](#huonw)</sup>
-
-
+## `isize` and `usize`
 
 
 ## Floats
 
-## Handling Overflow
+## Overflow
+### Signed Overflow
+<sup>[1](#reddit)</sup>
+
+<sup>[2](#huonw)</sup>
 ### Saturating
 ### Wrapping
 ### Checking
@@ -100,7 +99,6 @@ So what happens with larger unsigned integer types?
 ### Unsigned
 
 ### Signed
-
 
 
 ## Conclusion

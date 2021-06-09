@@ -11,6 +11,7 @@ _10 June 2021 · #rust · #primitives_
   - [Overflow](#overflow)
   - [Floats](#floats)
 - [Practice](#practice)
+  - [Constants](#constants)
   - [`isize` and `usize`](#isize-and-usize)
   - [Conversion](#conversion)
   - [Handling Overflow](#handling-overflow)
@@ -21,16 +22,20 @@ _10 June 2021 · #rust · #primitives_
 
 ## Intro
 
+Hey everyone, welcome to my first Rust blog post!
+My goal with this post is to provide a beginner-friendly guide that covers 90% of what you might come across in general Rust when it comes to numbers.
+While this isn't at all an exhaustive guide, I hope that readers will gain enough from it to jumpstart their searches for more in-depth information.
+
 This blog is broken into two parts:
 - Theoretical: Acts as a general overview of numerical data representation.
 - Practical: Builds off of the theory and shows how to improve your usage of numbers in Rust.
 
-You may find this blog usefeful if:
-- You're coming to Rust from an interpreted language, like Python.
-- You'd like a refresher on numerical data representation.
-- You've wondered when to use `isize` or `usize`?
+You may find this blog useful if:
+- You're coming to Rust from a higher-level or interpreted language, like Python.
+- You'd like a refresher on numerical data representation, especially as it relates to Rust.
+- You've wondered when to use `isize` or `usize`
 - You don't know how to prevent cases like `10_u8 - 20_u8` from panicking.
-- You don't know what the `saturating`, `wrapping` and `overflowing` integer methods in the standard library do.
+- You're not sure what the `saturating`, `wrapping` and `overflowing` integer methods in the standard library do.
 
 ## Theory
 
@@ -83,7 +88,7 @@ b. give you keywords to search for more in-depth information (`overflowing_liter
 
 These numbers are `unsigned` because they do not contain a `sign bit`, a bit used to indicate whether a number is positive or negative. 
 Therefore **unsigned integers can only represent positive values**.
-This makes them perfect for modeling situations where negative values don't exist, like a shopping cart. 
+This makes them perfect for modeling situations where negative values don't exist, like a shopping cart; you can't have `-1 headphones` in your cart, right? 
 As you'll see in the section on `signed integers`, the maximum number you can represent in a `u8` is larger than that of an `i8`.
 This is true for `unsigned` type to their `signed` counterpart. 
 
@@ -236,6 +241,24 @@ Mantissa vs exponent
 
 ## Practice
 
+### Constants
+As great as it is to know what happens under the hood, it would be nice to have convenient ways to... 
+- check what is the difference in precision for Pi as an `f32` vs an `f64`
+- see what the minimum or maximum value for a given type is, like `i128` or `u128`.
+- represent `infinity` or `negative infinity` or `NaN`
+
+That's where constants come in. 
+
+> fun fact: in the source code, NAN is represented as 0.0_f32/0.0_f32, INFINITY as 1.0_f32/0.0_f32, and NEG_INFINITY as -1.0_f32/0.0_f32
+```rust
+
+//TODO: Add examples
+```
+
+Check a given type's documentation to see what kind of constants they have available. 
+For example, [`std::i128`](https://doc.rust-lang.org/std/i128/index.html) and [`std::f32`](https://doc.rust-lang.org/std/f32/consts/index.html)
+
+
 ### `isize` and `usize`
 According to [The Rust Reference](https://doc.rust-lang.org/reference/types/numeric.html#machine-dependent-integer-types), these integer types are machine-dependent and use the same number of bits as that of a pointer in the machine. This makes `usize` and `isize` proportional to the size of the machine's address space, and this is determined by its architecture (x86-64, etc). These types can be 16-bit, 32-bit, or 64-bit depending on the machine. However, due to many pieces of Rust code assuming sizes of 32-bit or 64-bit (common pointer sizes in modern architectures), 16-bit support is limited.
 The primary concerns around machine-dependent types are that of portability and security. 
@@ -262,15 +285,17 @@ Basically, stick to explicit integer types as much as possible and be wary when 
 
 #### Converting with `From`
 For numeric types, `From` is only implemented for *lossless* conversions. 
-`i64::from(10_i32)` Ok!
-`i32::from(10_i64)` Err!
+```rust
+let ten_as_i64 = i64::from(10_i32) // Ok!
+let ten_as_i32 = i32::from(10_i64) // Panics!
+```
 
 
 #### Casting with `as`
 `as` works for **both** *lossless* and *lossy* conversions.
 
 When casting from one integer type to another integer type, with the same number of bits, it is a [no-op](https://en.wikipedia.org/wiki/NOP_(code)), as in nothing happens.
-The value of the integer is not maintained and the bits are merely interpreted as the destination type's encoding. 
+Unlike `From`, the true value of the integer is not maintained and the bits are merely interpreted as the destination type's encoding.
 ```rust
 println!("128_u8 `as` i8 becomes {}", 128_u8 as i8);
 // 128_u8 `as` i8 becomes -128
@@ -304,6 +329,9 @@ These explicit implementations give you precise control over your numerical oper
 
 These methods will prevent panicking when overflow occurs and let you overflow purposefully if that's your intention (like in hashing algorithms and ring buffers).
 
+```rust
+//TODO: Elaborate on these further, especially in regard to signed integers`
+```
 - `wrapping_..` returns the straight two's complement result
 - `saturating_..` returns the largest/smallest value (as appropriate) of the type when overflow occurs
 - `overflowing_..` returns the two's complement result along with a boolean indicating if overflow occured

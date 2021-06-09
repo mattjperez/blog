@@ -1,6 +1,6 @@
 # Numbers in Rust: A Primer
 
-_01 January 2021 · #rust · #traits_
+_10 June 2021 · #rust · #primitives_
 
 **Table of Contents**
 - [Intro](#intro)

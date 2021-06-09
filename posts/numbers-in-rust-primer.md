@@ -8,7 +8,6 @@ _10 June 2021 · #rust · #primitives_
   - [Unsigned Integers](#unsigned-integers)
   - [Signed Integers](#signed-integers)
   - [isize and usize](#isize-and-usize)
-  - [Overflow](#overflow)
   - [Floats](#floats)
 - [Practice](#practice)
   - [Constants](#constants)

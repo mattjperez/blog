@@ -4,32 +4,37 @@ _10 June 2021 · #rust · #primitives_
 
 **Table of Contents**
 - [Intro](#intro)
-- [Unsigned Integers](#unsigned-integers)
-- [Signed Integers](#signed-integers)
-- [isize and usize](#isize-and-usize)
-- [Floats](#floats)
-- [Conversion](#conversion)
-- [Overflow](#overflow)
-  - [Saturating](#saturating)
-  - [Wrapping](#wrapping)
-  - [Checking](#checking)
-  - [Overflowing](#overflowing)
-- [Bitwise Operations](#bitwise-operations)
-  - [Unsigned](#unsigned)
-  - [Signed](#signed) 
+- [Theory](#theory)
+  - [Unsigned Integers](#unsigned-integers)
+  - [Signed Integers](#signed-integers)
+  - [isize and usize](#isize-and-usize)
+  - [Overflow](#overflow)
+  - [Floats](#floats)
+  - [Endianness](#endianness)
+- [Practice](#practice)
+  - [`isize` and `usize`](#isize-and-usize)
+  - [Conversion](#conversion)
+  - [Handling Overflow](#handling-overflow)
 - [Conclusion](#conclusion)
 - [Bibliography](#bibliography)
 
 
 
 ## Intro
+
+This blog is broken into two parts:
+- Theoretical: Acts as a general overview of numerical data representation.
+- Practical: Builds off of the theory and shows how to improve your usage of numbers in Rust.
+
 If you've ever felt unsure of or wondered about any of the following, then you may find this article helpful.
 - When should I use `isize` or `usize`?
 - What happens when I do something like `10_usize - 20_usize` and how do I handle the result?
 - What are the `saturating`, `wrapping` and `overflowing` integer methods in the standard library?
 - How does Rust handle overflow bit-shifting on signed integers?
 
-## Integers
+## Theory
+
+### Integers
 In computer science, everything (at the moment) is represented by `1`'s and `0`'s, stored in groupings such as `bytes` (8 `bits`).  
 Each bit represents a **power of 2**, so a group of **8 bits** representing the number `130` may look like this.
 
@@ -84,7 +89,7 @@ This is true for `unsigned` type to their `signed` counterpart.
 
 
 
-## Signed Integers
+### Signed Integers
 There are different ways to represent signed integers, Rust uses a method called [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement). 
 Ben Eater has a [video on two's complement](https://www.youtube.com/watch?v=4qH4unVtJkE&t=29s) where he does an amazing job of explaining things. The next few sub-sections are merely a recap of his video so feel free to skip it if you're familiar with the concept. I'm including this as a convenient reference when looking at how Rust handles integer overflow.
 
@@ -177,27 +182,12 @@ Bit Addition/Subtraction is restored!
 
 There you have it, this is how signed integers are represented in Rust.
 
-
-## `isize` and `usize`
-According to [The Rust Reference](https://doc.rust-lang.org/reference/types/numeric.html#machine-dependent-integer-types), these integer types are machine-dependent and use the same number of bits as that of a pointer in the machine. This makes `usize` and `isize` proportional to the size of the machine's address space, and this is determined by its architecture (x86-64, etc). These types can be 16-bit, 32-bit, or 64-bit depending on the machine. However, due to many pieces of Rust code assuming sizes of 32-bit or 64-bit (common pointer sizes in modern architectures), 16-bit support is limited.
-
-The biggest question I had was when should I use them? After some quick googling, the general consensus appears to be use in situations related to:
-
-- indexing 
-- offsets
-
-Even these uses tend to gravitate around`usize`, while  `isize` appears to have less common use-cases.
-
-> If you have any opinions on this or any major use-cases you think would be useful for others, please feel free to open an issue/pull-request/discussion!
-
-The primary concerns around machine-dependent types are that of portability and security. By using `isize` or `usize` at inappropriate points in your code, you're introducing variation in how your code *could* operate. These could manifest as overflows  on machines with 16-bit pointers due to the lack of support as mentioned at the beginning of this section or something less obvious (which is arguably worse). 
-
-
-
 ## Floats
 Floats in Rust follow the 2008 revision of the IEEE-754 standard on 
 [single-precision floating-points](https://en.wikipedia.org/wiki/Single-precision_floating-point_format)(e.g. `f32`, `float`, `binary32`)
 and [double-precision floating-points](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)(e.g. `f64`, `double`, `binary64`) representations of floating-points.
+
+> Don't use floats for financial operations
 
 ```
  1/2, 1/4, 1/8, 1/16, 1/32
@@ -218,31 +208,38 @@ Mantissa vs exponent
 
 56 binary digits of precision for f64
 
-> Don't use floats for financial operations
+### Endianness
 
 
+## Practice
 
-## Conversion
+### `isize` and `usize`
+According to [The Rust Reference](https://doc.rust-lang.org/reference/types/numeric.html#machine-dependent-integer-types), these integer types are machine-dependent and use the same number of bits as that of a pointer in the machine. This makes `usize` and `isize` proportional to the size of the machine's address space, and this is determined by its architecture (x86-64, etc). These types can be 16-bit, 32-bit, or 64-bit depending on the machine. However, due to many pieces of Rust code assuming sizes of 32-bit or 64-bit (common pointer sizes in modern architectures), 16-bit support is limited.
 
-### Casting: `as` vs From
+The biggest question I had was when should I use them? After some quick googling, the general consensus appears to be use in situations related to:
+
+- indexing 
+- offsets
+
+Even these uses tend to gravitate around`usize`, while  `isize` appears to have less common use-cases.
+
+> If you have any opinions on this or any major use-cases you think would be useful for others, please feel free to open an issue/pull-request/discussion!
+
+The primary concerns around machine-dependent types are that of portability and security. By using `isize` or `usize` at inappropriate points in your code, you're introducing variation in how your code *could* operate. These could manifest as overflows  on machines with 16-bit pointers due to the lack of support as mentioned at the beginning of this section or something less obvious (which is arguably worse). 
+### Conversion
+#### Casting: `as` vs From
 
 https://doc.rust-lang.org/stable/rust-by-example/types/cast.html
 
-## Overflow
+## Handling Overflow
+#### Rust vs C/C++
 ### Signed Overflow
 <sup>[1](#reddit)</sup>
 <sup>[2](#huonw)</sup>
-### Saturating
-### Wrapping
-### Checking
-### Overflowing'
-
-
-## Bitwise Operations
-
-### Unsigned
-
-### Signed
+- Saturating
+- Wrapping
+- Checking
+- Overflowing'
 
 ## Conclusion
 

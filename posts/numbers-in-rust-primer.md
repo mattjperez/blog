@@ -10,7 +10,6 @@ _10 June 2021 · #rust · #primitives_
   - [isize and usize](#isize-and-usize)
   - [Overflow](#overflow)
   - [Floats](#floats)
-  - [Endianness](#endianness)
 - [Practice](#practice)
   - [`isize` and `usize`](#isize-and-usize)
   - [Conversion](#conversion)
@@ -233,8 +232,6 @@ Mantissa vs exponent
 23 binary digits of precision for f32
 
 56 binary digits of precision for f64
-
-### Endianness
 
 
 ## Practice

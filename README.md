@@ -17,7 +17,7 @@ Get notified when a blog post get published by
 
 ## Feedback
 
-If you have any feedback please feel welcome to [open an issue](https://github.com/mattjperez/blog/issues/new) on this repo. 
+If you have any feedback or conceptual corrections, please feel welcome to [open an issue](https://github.com/mattjperez/blog/issues/new) on this repo. 
 I accept pull requests for minor fixes like typos and grammar.
 
 ## Discuss
@@ -32,5 +32,5 @@ I found myself choosing to publish in this way for many of the same reasons pret
 Their blog's format felt easily accessible and more than sufficient for my needs, so I decided not to reinvent the wheel.
 
 In keeping with true copy-pasta fashion, I've decided to start mine the same way, 
-in my own '[Why blog?](./posts/why-blog.md)' post.
+in my own [Why blog?](./posts/why-blog.md) post.
 

@@ -5,7 +5,7 @@ All opinions are my own.
 
 | Topic | Date | Title |
 |-|-|-|
-| Rust | 2021-06-10 | [Numbers in Rust: A Primer](./posts/numbers-in-rust-primer.md) |
+| Rust | 2021-06-10 | [Numbers in Rust: A Primer](https://mattjperez.github.io/numbers-in-rust/) |
 | General | 2021-05-02 | [Why blog?](./posts/why-blog.md) |
 
 ## Notifications
